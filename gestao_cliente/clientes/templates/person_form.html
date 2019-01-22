@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body> 
-    <form method="POST" enctype="multipart/form-data"> <!--enctype para mostrar os arquivos de mídia-->
-        {% csrf_token %} <!--Para segurança dos dados do form-->
-        {{ form }}
-        <button type="submit">Salvar</button>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %} 
+{% load bootstrap %}
+
+{% block title %} Administração {% endblock %}
+
+{% block main %}
+<h3>Novo Cliente</h3>
+<form method="POST" enctype="multipart/form-data"> <!--enctype para mostrar os arquivos de mídia-->
+    {% csrf_token %} <!--Para segurança dos dados do form-->
+    {{ form|bootstrap }}
+    <button type="submit">Salvar</button>
+</form>
+
+
+{% endblock %}

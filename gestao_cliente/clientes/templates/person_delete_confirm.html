@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.html' %} 
+{% block title %} Administração {% endblock %}
+{% block main %}
+    <h1>Tem certeza que deseja deletar {{ person.first_name }}?</h1>
 
-<h1>Tem certeza que deseja deletar {{ person.first_name }}?</h1>
-
-    <form method="POST" enctype="multipart/form-data"> <!--enctype para mostrar os arquivos de mídia-->
-        {% csrf_token %} <!--Para segurança dos dados do form-->
+        <form method="POST" enctype="multipart/form-data"> <!--enctype para mostrar os arquivos de mídia-->
+            {% csrf_token %} <!--Para segurança dos dados do form-->
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+{% endblock %}
         
-        <button type="submit">Delete</button>
-    </form>
-
-
-
-</body>
-</html>

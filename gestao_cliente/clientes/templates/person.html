@@ -1,23 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        {% for person in persons %} 
-            <li>
-                <a href="{% url 'persons_update' person.id %}">{{ person.first_name }}</a>
-                <a href="{% url 'persons_delete' person.id %}">Deletar</a>
-            </li>
+{% extends 'base.html' %} 
+{% load bootstrap %} 
+{% block title %} Administração {% endblock %}
+{% block main %}
+
+<div class="row">
+    <div class="col">
+
+    </div>
+    <div class="col-6">
+        {% if user.is_authenticated %}
+        <h4> Olá {{user.username}} </h4>
+    </div>
+    <div class="col">
+        <br></br>
+        <a href="{% url 'logout' %}" class="btn btn-warning">Sair</a>
+    </div>
+
+    {% endif %}
+</div>
+
+<div class="row">
+    <ul class="list-group">
+        {% for person in persons %}
+        <li class="list-group-item">
+            <a href="{% url 'persons_update' person.id %}" class="btn btn-success">{{ person.first_name }}</a>
+            <a href="{% url 'persons_delete' person.id %}" class="btn btn-danger">Deletar</a>
+        </li>
 
         {% endfor %}
 
     </ul>
-    
-    <a href="{% url 'person_new' %}">Novo Cliente</a>
-</body>
-</html>
+</div>
+<br></br>
+<a href="{% url 'person_new' %}" class="btn btn-primary">Novo Cliente</a>
+
+
+{% endblock %}
